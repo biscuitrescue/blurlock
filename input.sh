@@ -12,16 +12,16 @@ chmod +x blurlock.sh
 
 if [ $var1='1' ] ; then
 	if test -e /usr/bin/doas ; then
-		doas mv blurlock.sh /usr/bin/blurlock
+		doas cp blurlock.sh /usr/bin/blurlock
 	elif test -e /usr/bin/sudo ; then 
-		sudo mv blurlock.sh /usr/bin/blurlock
+		sudo cp blurlock.sh /usr/bin/blurlock
 	else 
 		echo Run as root
 	fi
 elif [ $var1='2' ] ; then
 	if [ find ~/ -name .profile ] ; then 									# NEED TO FIGURE OUT WHICH SHELL IS BEING USED AND FOR FISH
 		if [ grep -i .local/bin ~/.profile ] ; then 						# SIMPLE IF ELSE || NOT WORKING
-			mv blurlock.sh ~/.local/bin/blurlock 							# COULD TRY WITH INDIVIDUAL, BUT $SHELL ALWAYS OUTPUTS TRUE
+			cp blurlock.sh ~/.local/bin/blurlock 							# COULD TRY WITH INDIVIDUAL, BUT $SHELL ALWAYS OUTPUTS TRUE
 			echo
 			echo done
 			echo
